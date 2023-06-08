@@ -38,7 +38,8 @@ public class GetLanguage {
 		LanguageDetectresponse detectResponse=null;
 		try {
 			JsonReader reader;
-			reader = WebApiConnector.postJsonReader(url, proxy, map, detectReqString);
+//			reader = WebApiConnector.postJsonReader(url, proxy, map, detectReqString);
+			reader = WebApiConnector.postJsonReader(url, map, detectReqString);
 			if (reader != null) {
 				detectResponse = gson.fromJson(reader, LanguageDetectresponse.class);
 				reader.close();
