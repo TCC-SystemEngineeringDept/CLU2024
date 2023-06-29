@@ -10,7 +10,10 @@
 <h1>KeyPhrases</h1>
 <form method="post" action="./keyPhrases">
 parameter:
-<input type="text" name="parameter">
+<TEXTAREA NAME="parameter" ROWS="10" COLS="30">
+社会に貢献できる即戦力としての知識と技術、そして豊かな教養を身につけたスペシャリストの育成こそが
+創立から4万名以上の卒業生を社会に送りだしてきた情報教育伝統校としての本校の使命です。
+</TEXTAREA>
 <input type="submit" value="送信">
 </form>
 </body>
