@@ -7,6 +7,7 @@
 <title>R05 JK3AB AI System 2</title>
 </head>
 <body>
-<a href="./langDetectForm">LanguageDetection</a>
+<a href="./langDetectForm">LanguageDetection</a><br>
+<a href="./keyPhrasesForm">KeyPhrases</a>
 </body>
 </html>
