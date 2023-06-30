@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.ac.jc21.jk3a00.api.KeyPhrases.GetKeyPhrases;
+
 /**
  * Servlet implementation class LangDetectionFormServlet
  */
@@ -27,7 +29,7 @@ public class KeyPhrasesServlet extends HttpServlet {
 		}
 		request.setAttribute("parameter",parameter);
 
-		String[] detected = {"実学の重視","人間性の涵養","社会への貢献"};
+		String[] detected = GetKeyPhrases.getKeyPhrases(parameter);
 		request.setAttribute("detected",detected);
 
 
