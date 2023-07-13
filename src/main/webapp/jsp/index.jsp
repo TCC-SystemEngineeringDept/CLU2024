@@ -8,6 +8,7 @@
 </head>
 <body>
 <a href="./langDetectForm">LanguageDetection</a><br>
-<a href="./keyPhrasesForm">KeyPhrases</a>
+<a href="./keyPhrasesForm">KeyPhrases</a><br>
+<a href="./sentimentForm">Sentiment</a>
 </body>
 </html>
