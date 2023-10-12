@@ -1,4 +1,4 @@
-package jp.ac.jc21.jk3a00.api.KeyPhrases;
+package jp.ac.jc21.jk3a00.api.language;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -10,15 +10,14 @@ import com.google.gson.stream.JsonReader;
 
 import jp.ac.jc21.jk3a00.AzureApiDefinitionInterface;
 import jp.ac.jc21.jk3a00.api.WebApiConnector;
-import jp.ac.jc21.jk3a00.api.KeyPhrases.request.KeyPhrasesRequestJson;
-import jp.ac.jc21.jk3a00.api.KeyPhrases.response.KeyPhrasesResponse;
+import jp.ac.jc21.jk3a00.api.detection.request.LangReq;
+import jp.ac.jc21.jk3a00.api.detection.response.LangResponse;
 
-public class GetKeyPhrases {
+public class GetLanguage {
 
-	public static String[] getKeyPhrases(String parameter) {
+	public static String getLanguageText(String parameter) {
 		// jsonパラメーターを作成
-		KeyPhrasesRequestJson detectReq=new KeyPhrasesRequestJson(parameter);
-//		KeyPhrasesRequestJson detectReq=new KeyPhrasesRequestJson();
+		LangReq detectReq=new LangReq(parameter);
 		Gson gson=new Gson();
 		String detectReqString = gson.toJson(detectReq);
 
@@ -37,13 +36,13 @@ public class GetKeyPhrases {
 		// Proxy設定（学内利用のみ）
 		InetSocketAddress proxy = new InetSocketAddress("172.17.0.2", 80);
 
-		KeyPhrasesResponse detectResponse=null;
+		LangResponse response=null;
 		try {
 			JsonReader reader;
-//			reader = WebApiConnector.postJsonReader(url, proxy, map, detectReqString);
-			reader = WebApiConnector.postJsonReader(url, map, detectReqString);
+			reader = WebApiConnector.postJsonReader(url, proxy, map, detectReqString);
+//			reader = WebApiConnector.postJsonReader(url, map, detectReqString);
 			if (reader != null) {
-				detectResponse = gson.fromJson(reader, KeyPhrasesResponse.class);
+				response = gson.fromJson(reader, LangResponse.class);
 				reader.close();
 			}
 		} catch (URISyntaxException e) {
@@ -57,13 +56,9 @@ public class GetKeyPhrases {
 			e.printStackTrace(System.out);
 		}
 
-		String[] keyPhrases=new String[0];
-		if(detectResponse != null) {
-			if(detectResponse.results != null) {
-				keyPhrases=detectResponse.results.documents[0].keyPhrases;
-			}
-		}
-		return keyPhrases;
+		String detected="エラーが発生しているようです。resultsがnullでした";
+		
+		return detected;
 	}
 
 }

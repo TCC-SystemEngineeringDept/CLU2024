@@ -6,15 +6,15 @@ package jp.ac.jc21.jk3a00.api.detection.request;
           }
 */
 
-public class LanguageDetectionRequestJsonDocuments {
+public class LangReqAInputDocs {
 	String id;
 	String text;
 
-	public LanguageDetectionRequestJsonDocuments() {
+	public LangReqAInputDocs() {
 		this( "This is a document written in English.");
 	}
 
-	public LanguageDetectionRequestJsonDocuments(String parameter) {
+	public LangReqAInputDocs(String parameter) {
 		id="1";
 		text = parameter;
 	}
