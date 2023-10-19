@@ -10,14 +10,14 @@ import com.google.gson.stream.JsonReader;
 
 import jp.ac.jc21.jk3a00.AzureApiDefinitionInterface;
 import jp.ac.jc21.jk3a00.api.WebApiConnector;
-import jp.ac.jc21.jk3a00.api.detection.request.LangReq;
-import jp.ac.jc21.jk3a00.api.detection.response.LangResponse;
+import jp.ac.jc21.jk3a00.api.detection.request.LanguageParameter;
+import jp.ac.jc21.jk3a00.api.detection.response.LanguageResult;
 
 public class GetLanguage {
 
 	public static String getLanguageText(String parameter) {
 		// jsonパラメーターを作成
-		LangReq detectReq=new LangReq(parameter);
+		LanguageParameter detectReq=new LanguageParameter(parameter);
 		Gson gson=new Gson();
 		String detectReqString = gson.toJson(detectReq);
 
@@ -36,13 +36,13 @@ public class GetLanguage {
 		// Proxy設定（学内利用のみ）
 		InetSocketAddress proxy = new InetSocketAddress("172.17.0.2", 80);
 
-		LangResponse response=null;
+		LanguageResult response=null;
 		try {
 			JsonReader reader;
 			reader = WebApiConnector.postJsonReader(url, proxy, map, detectReqString);
 //			reader = WebApiConnector.postJsonReader(url, map, detectReqString);
 			if (reader != null) {
-				response = gson.fromJson(reader, LangResponse.class);
+				response = gson.fromJson(reader, LanguageResult.class);
 				reader.close();
 			}
 		} catch (URISyntaxException e) {
