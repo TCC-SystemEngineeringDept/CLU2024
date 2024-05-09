@@ -23,11 +23,15 @@ public class GetLanguage {
 
 		// jsonパラメーターを表示
 		System.out.append(detectReqString);
+		System.out.append(System.lineSeparator());
 
 		// APIのURLを設定
 
 		String url = AzureApiDefinitionInterface.apiUrl+
-		"/language/:analyze-text?api-version=2022-05-01";
+		"/language/:analyze-text?api-version=2023-04-01";
+		
+		System.out.append(url);
+		System.out.append(System.lineSeparator());
 
 		// Subscription-Keyを設定
 		HashMap< String , String >  map = new HashMap<>();
@@ -57,6 +61,12 @@ public class GetLanguage {
 		}
 
 		String detected="エラーが発生しているようです。resultsがnullでした";
+		if(response != null) {
+			detected = response.getResults().getDocuments()[0].getDetectedLanguage().getName();
+			System.out.append(detected);
+			System.out.append(System.lineSeparator());
+		}
+
 		
 		return detected;
 	}
