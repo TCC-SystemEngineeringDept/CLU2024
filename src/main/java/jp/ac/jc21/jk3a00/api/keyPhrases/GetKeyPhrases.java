@@ -17,8 +17,8 @@ public class GetKeyPhrases {
 
 	public static String[] getKeyPhrases(String parameter) {
 		// jsonパラメーターを作成
-//		Analyzetextkeyphraseextractioninput keyPhrasesRequest=new Analyzetextkeyphraseextractioninput(parameter);
-		Analyzetextkeyphraseextractioninput keyPhrasesRequest=new Analyzetextkeyphraseextractioninput();
+		Analyzetextkeyphraseextractioninput keyPhrasesRequest=new Analyzetextkeyphraseextractioninput(parameter);
+//		Analyzetextkeyphraseextractioninput keyPhrasesRequest=new Analyzetextkeyphraseextractioninput();
 		
 		Gson gson=new Gson();
 		String detectReqString = gson.toJson(keyPhrasesRequest);
@@ -29,7 +29,7 @@ public class GetKeyPhrases {
 		// APIのURLを設定
 
 		String url = AzureApiDefinitionInterface.apiUrl+
-		"/language/:analyze-text?api-version=2022-05-01";
+		"/language/:analyze-text?api-version=2023-04-01";
 
 		// Subscription-Keyを設定
 		HashMap< String , String >  map = new HashMap<>();
@@ -59,10 +59,15 @@ public class GetKeyPhrases {
 
 		String[] keyPhrases=new String[0];
 		if(detectResponse != null) {
-//			if(detectResponse.results != null) {
-//				keyPhrases=detectResponse.results.documents[0].keyPhrases;
-//			}
+			if(detectResponse.getResults() != null) {
+				keyPhrases=detectResponse.getResults().getDocuments()[0].getKeyPhrases();
+			}
+			if(detectResponse.getError()!= null) {
+				System.err.println("ERROR:Code="+detectResponse.getError().getCode());
+				System.err.println("ERROR:Message="+detectResponse.getError().getMessage());
+			}
 		}
+		
 		return keyPhrases;
 	}
 
