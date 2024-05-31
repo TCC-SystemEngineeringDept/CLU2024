@@ -10,8 +10,8 @@ import com.google.gson.stream.JsonReader;
 
 import jp.ac.jc21.jk3a00.AzureApiDefinitionInterface;
 import jp.ac.jc21.jk3a00.api.WebApiConnector;
-import jp.ac.jc21.jk3a00.api.detection.request.LanguageParameter;
-import jp.ac.jc21.jk3a00.api.detection.response.LanguageResult;
+import jp.ac.jc21.jk3a00.api.language.request.LanguageParameter;
+import jp.ac.jc21.jk3a00.api.language.response.LanguageResult;
 
 public class GetLanguage {
 
