@@ -5,6 +5,6 @@ public interface AzureApiDefinitionInterface {
 	static final String apiUrl = "https://aisys2.cognitiveservices.azure.com/";
 	
 	// EndPoint key
-	static final String subscriptionKey = "Through a lifetime of our dreams";
+	static final String subscriptionKey = "8952b882772646818c1328d9980a249e";
 
 }
