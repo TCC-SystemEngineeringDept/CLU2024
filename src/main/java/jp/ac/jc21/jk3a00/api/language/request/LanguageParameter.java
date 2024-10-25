@@ -1,8 +1,5 @@
 package jp.ac.jc21.jk3a00.api.language.request;
 
-/**
- * 
- */
 
 public class LanguageParameter {
 
