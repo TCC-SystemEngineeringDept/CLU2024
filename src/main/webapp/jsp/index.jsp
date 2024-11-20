@@ -8,6 +8,5 @@
 </head>
 <body>
 <a href="./langDetectForm">LanguageDetection</a><br>
-<a href="webIndex">webIndex</a><br>
 </body>
 </html>
